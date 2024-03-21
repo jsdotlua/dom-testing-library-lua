@@ -1,0 +1,49 @@
+{
+  "name": "@jsdotlua/dom-testing-library",
+  "version": "8.14.2-rc.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsdotlua/dom-testing-library-lua.git"
+  },
+  "contributors": [
+    {
+      "name": "Ignacio Falk",
+      "email": "flakolefluk@gmail.com"
+    },
+    {
+      "name": "Allan Jeremy",
+      "email": "dev@allanjeremy.com"
+    },
+    {
+      "name": "Paul Doyle",
+      "email": "pdoyle@roblox.com"
+    }
+  ],
+  "license": "MIT",
+  "main": "src/init.lua",
+  "scripts": {
+    "prepare": "npmluau",
+    "build-assets": "sh ./scripts/build-assets.sh",
+    "lint": "selene src",
+    "format": "stylua src",
+    "style-check": "stylua --check src",
+    "test:roblox": "sh ./scripts/roblox-test.sh",
+    "verify-pack": "yarn pack --dry-run",
+    "clean": "rm -rf roblox build node_modules"
+  },
+  "dependencies": {
+    "@jsdotlua/chalk": "^0.2.1",
+    "@jsdotlua/jest-get-type": "^3.6.1-rc.2",
+    "@jsdotlua/jest-globals": "^3.6.1-rc.2",
+    "@jsdotlua/jest-roblox-shared": "^3.6.1-rc.2",
+    "@jsdotlua/luau-polyfill": "^1.2.6",
+    "@jsdotlua/pretty-format": "^3.6.1-rc.2",
+    "@jsdotlua/promise": "^3.5.0",
+    "luau-regexp": "^0.2.1"
+  },
+  "devDependencies": {
+    "@jsdotlua/jest": "^3.6.1-rc.2",
+    "npmluau": "^0.1.1"
+  },
+  "packageManager": "yarn@4.0.2"
+}
