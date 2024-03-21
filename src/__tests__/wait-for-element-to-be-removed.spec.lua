@@ -12,8 +12,7 @@ local test = JestGlobals.test
 
 local CollectionService = game:GetService("CollectionService")
 
-local waitForElementToBeRemoved =
-	require("../wait-for-element-to-be-removed").waitForElementToBeRemoved
+local waitForElementToBeRemoved = require("../wait-for-element-to-be-removed").waitForElementToBeRemoved
 local renderIntoDocument = require("./helpers/test-utils").renderIntoDocument
 
 local document = require("../jsHelpers/document")
