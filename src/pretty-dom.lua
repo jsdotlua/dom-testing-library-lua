@@ -1,22 +1,21 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/pretty-dom.js
-local Packages = script.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 local Object = LuauPolyfill.Object
 local console = LuauPolyfill.console
 type Object = LuauPolyfill.Object
 
-local TypeError = require(script.Parent.jsHelpers.typeError)
+local TypeError = require("./jsHelpers/typeError")
 
 local exports = {}
 
-local prettyFormat = require(Packages.PrettyFormat)
-local createDOMElementFilter = require(script.Parent.DOMElementFilter).default
-local getUCFModule = require(script.Parent["get-user-code-frame"])
-local getDocument = require(script.Parent.helpers).getDocument
+local prettyFormat = require("@pkg/@jsdotlua/pretty-format")
+local createDOMElementFilter = require("./DOMElementFilter").default
+local getUCFModule = require("./get-user-code-frame")
+local getDocument = require("./helpers").getDocument
 -- ROBLOX deviation START: avoid circular dependency
-local defaultIgnore = require(script.Parent["config-default-ignore"])
+local defaultIgnore = require("./config-default-ignore")
 -- ROBLOX deviation END
 
 local function inNode()

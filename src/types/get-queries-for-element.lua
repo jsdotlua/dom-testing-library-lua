@@ -1,14 +1,12 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/types/get-queries-for-element.d.ts
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 type Array<T> = LuauPolyfill.Array<T>
 type Error = LuauPolyfill.Error
 type Promise<T> = LuauPolyfill.Promise<T>
 
 local exports = {}
 
--- local _queries = require(script.Parent.queries)
+-- local _queries = require("./queries")
 
 -- ROBLOX deviation START: some contraints for types not available, inline return types
 export type BoundFunction<T> = (container: Instance, ...any) -> any

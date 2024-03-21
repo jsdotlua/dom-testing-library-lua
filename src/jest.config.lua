@@ -1,6 +1,7 @@
-local Packages = script.Parent.Parent
+local ServerScriptService = game:GetService("ServerScriptService")
+
 return {
 	displayName = "Jest",
-	setupFilesAfterEnv = { Packages.TestsSetup["setup-env"] },
+	setupFilesAfterEnv = { ServerScriptService:FindFirstChild("TestsSetup"):FindFirstChild("setup-env") },
 	testMatch = { "**/__tests__/**/*.spec" },
 }

@@ -1,12 +1,11 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/wait-for.js
-local Packages = script.Parent.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Error = LuauPolyfill.Error
 local setTimeout = LuauPolyfill.setTimeout
 
-local Promise = require(Packages.Promise)
+local Promise = require("@pkg/@jsdotlua/promise")
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local beforeEach = JestGlobals.beforeEach
@@ -19,11 +18,11 @@ local CollectionService = game:GetService("CollectionService")
 local __dirname = "wait%-for%.spec"
 -- ROBLOX deviation END
 
-local waitFor = require(script.Parent.Parent["wait-for"]).waitFor
-local configModule = require(script.Parent.Parent.config)
+local waitFor = require("../wait-for").waitFor
+local configModule = require("../config")
 local configure = configModule.configure
 local getConfig = configModule.getConfig
-local renderIntoDocument = require(script.Parent.helpers["test-utils"]).renderIntoDocument
+local renderIntoDocument = require("./helpers/test-utils").renderIntoDocument
 
 local function deferred()
 	local resolve, reject
@@ -409,13 +408,15 @@ test("does not work after it resolves", function()
 					-- we return a real promise here. As far as I can tell, it
 					-- doesn't affect what this is testing
 					return Promise.new(function(resolve, reject)
-						thenable:andThen(function(returnValue)
+						local function andThenFn(returnValue)
 							context = originalContext
 							resolve(returnValue)
-						end, function(error_)
+						end
+						local function onError(error_)
 							context = originalContext
 							reject(error_)
-						end)
+						end
+						thenable:andThen(andThenFn, onError)
 					end)
 					-- ROBLOX deviation END
 				else

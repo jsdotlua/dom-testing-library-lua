@@ -1,13 +1,10 @@
---!strict
 -- ROBLOX upstream: no upstream
 local virtualInput = game:GetService("VirtualInputManager")
 
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Error = LuauPolyfill.Error
 
-local InputValidation = require(script.Parent["InputValidation.roblox"])
+local InputValidation = require("./InputValidation.roblox.lua")
 local getGuiObject = InputValidation.getGuiObject
 local validateInput = InputValidation.validateInput
 

@@ -1,7 +1,5 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/get-queries-for-element.js
-local Packages = script.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Object = LuauPolyfill.Object
 type Array<T> = LuauPolyfill.Array<T>
@@ -9,7 +7,7 @@ type Object = LuauPolyfill.Object
 
 local exports = {}
 
-local defaultQueries = require(script.Parent.queries)
+local defaultQueries = require("./queries")
 
 --[[*
  	* @typedef {{[key: string]: Function}} FuncMap

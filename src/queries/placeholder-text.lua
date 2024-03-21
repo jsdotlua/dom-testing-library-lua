@@ -1,17 +1,15 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/queries/placeholder-text.ts
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 type Array<T> = LuauPolyfill.Array<T>
 
 local exports = {}
 
-local wrapAllByQueryWithSuggestion = require(script.Parent.Parent["query-helpers"]).wrapAllByQueryWithSuggestion
-local checkContainerType = require(script.Parent.Parent.helpers).checkContainerType
-local typesModule = require(script.Parent.Parent.types)
+local wrapAllByQueryWithSuggestion = require("../query-helpers").wrapAllByQueryWithSuggestion
+local checkContainerType = require("../helpers").checkContainerType
+local typesModule = require("../types")
 type AllByBoundAttribute<T = Instance> = typesModule.AllByBoundAttribute<T>
 type GetErrorFunction<Argument = any> = typesModule.GetErrorFunction<Argument>
-local all_utilsModule = require(script.Parent["all-utils"])
+local all_utilsModule = require("./all-utils")
 local queryAllByAttribute = all_utilsModule.queryAllByAttribute
 local buildQueries = all_utilsModule.buildQueries
 

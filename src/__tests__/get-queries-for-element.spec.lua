@@ -1,19 +1,17 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/get-queries-for-element.js
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Object = LuauPolyfill.Object
 
-local document = require(script.Parent.Parent.jsHelpers.document)
+local document = require("../jsHelpers/document")
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local jest = JestGlobals.jest
 
-local getQueriesForElement = require(script.Parent.Parent["get-queries-for-element"]).getQueriesForElement
-local queries = require(script.Parent.Parent.queries)
+local getQueriesForElement = require("../get-queries-for-element").getQueriesForElement
+local queries = require("../queries")
 test("uses default queries", function()
 	local container = Instance.new("Frame")
 	container.Parent = document

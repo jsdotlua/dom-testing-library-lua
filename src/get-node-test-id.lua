@@ -1,11 +1,10 @@
 -- ROBLOX upstream: no upstream
-local Packages = script.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local String = LuauPolyfill.String
 type Array<T> = LuauPolyfill.Array<T>
 
-local getConfig = require(script.Parent.config).getConfig
+local getConfig = require("./config").getConfig
 
 local exports = {}
 

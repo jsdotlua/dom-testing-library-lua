@@ -1,19 +1,17 @@
 -- ROBLOX upstream: https://github.com/babel/babel/blob/v7.18.5/packages/babel-code-frame/test/index.js
-local Packages = script.Parent.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local describe = JestGlobals.describe
 local test = JestGlobals.test
 
 local HttpService = game:GetService("HttpService")
 
-local chalk = require(Packages.Chalk)
-local stripAnsi = require(script.Parent.Parent["strip-ansi"])
-local babelCodeFrame = require(script.Parent.Parent["babel-code-frame"])
+local chalk = require("@pkg/@jsdotlua/chalk")
+local stripAnsi = require("../strip-ansi")
+local babelCodeFrame = require("../babel-code-frame")
 local _codeFrame = babelCodeFrame.default
 local codeFrameColumns = babelCodeFrame.codeFrameColumns
 -- ROBLOX deviation START: functions do not have props in Lua

@@ -1,19 +1,17 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/wait-for-element-to-be-removed.js
-local Packages = script.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 local Error = LuauPolyfill.Error
 type Promise<T> = LuauPolyfill.Promise<T>
 
-local Promise = require(Packages.Promise)
+local Promise = require("@pkg/@jsdotlua/promise")
 
-local isCallable = require(script.Parent.jsHelpers.isCallable)
+local isCallable = require("./jsHelpers/isCallable")
 
 local exports = {}
 
-local waitFor = require(script.Parent["wait-for"]).waitFor
+local waitFor = require("./wait-for").waitFor
 
 local function isRemoved(result): boolean
 	return not Boolean.toJSBoolean(result)

@@ -1,13 +1,12 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/helpers.js
-local Packages = script.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 local Error = LuauPolyfill.Error
 type Object = LuauPolyfill.Object
 
-local TypeError = require(script.Parent.jsHelpers.typeError)
-local document = require(script.Parent.jsHelpers.document)
+local TypeError = require("./jsHelpers/typeError")
+local document = require("./jsHelpers/document")
 
 local exports = {}
 
@@ -19,9 +18,9 @@ local TEXT_NODE = 3
   Lua implentation may be different, and require a different check
 ]]
 local function jestFakeTimersAreEnabled()
-	local jest = require(Packages.JestGlobals).jest
+	local jest = require("@pkg/@jsdotlua/jest-globals").jest
 	-- ROBLOX deviation START: workaround to determine if fake timers are running
-	-- local setTimeout = require(Packages.LuauPolyfill).setTimeout :: any
+	-- local setTimeout = require("@pkg/@jsdotlua/luau-polyfill").setTimeout :: any
 	--[[ istanbul ignore else ]]
 	if jest ~= nil then
 			-- stylua: ignore

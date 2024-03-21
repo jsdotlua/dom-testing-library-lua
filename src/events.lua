@@ -1,19 +1,17 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/events.js
-local Packages = script.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Error = LuauPolyfill.Error
 local Object = LuauPolyfill.Object
 type Object = LuauPolyfill.Object
 
-local dispatchEvent = require(script.Parent.jsHelpers.dispatchEvent)
+local dispatchEvent = require("./jsHelpers/dispatchEvent")
 
 local exports = {}
 
-local getConfig = require(script.Parent.config).getConfig
-local _getWindowFromNode = require(script.Parent.helpers).getWindowFromNode
-local event_mapModule = require(script.Parent["event-map"])
+local getConfig = require("./config").getConfig
+local _getWindowFromNode = require("./helpers").getWindowFromNode
+local event_mapModule = require("./event-map")
 local eventMap = event_mapModule.eventMap
 local _eventAliasMap = event_mapModule.eventAliasMap
 

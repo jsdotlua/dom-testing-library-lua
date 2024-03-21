@@ -1,13 +1,11 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/matches.ts
-local Packages = script.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Error = LuauPolyfill.Error
 local String = LuauPolyfill.String
 local instanceOf = LuauPolyfill.instanceof
 type Object = LuauPolyfill.Object
 
-local RegExp = require(Packages.LuauRegExp)
+local RegExp = require("@pkg/luau-regexp")
 type RegExp = RegExp.RegExp
 
 local exports = {}
@@ -16,7 +14,7 @@ local exports = {}
 local matchRegExp
 -- ROBLOX deviation END
 
-local typesModule = require(script.Parent.types)
+local typesModule = require("./types")
 type Matcher = typesModule.Matcher
 type NormalizerFn = typesModule.NormalizerFn
 type NormalizerOptions = typesModule.NormalizerOptions

@@ -1,11 +1,10 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/DOMElementFilter.ts
 -- ROBLOX comment: replaced with https://github.com/Roblox/jest-roblox/blob/v2.4.1/src/pretty-format/src/plugins/RobloxInstance.lua
---[[ ROBLOX comment:	
+--[[ ROBLOX comment:
 	this plugin serializes Roblox Instance objects
 	https://developer.roblox.com/en-us/api-reference/class/Instance
 ]]
-local Packages = script.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Object = LuauPolyfill.Object
 local instanceof = LuauPolyfill.instanceof
@@ -13,10 +12,10 @@ type Object = LuauPolyfill.Object
 
 local exports = {}
 
-local JestGetType = require(Packages.JestGetType)
+local JestGetType = require("@pkg/@jsdotlua/jest-get-type")
 local getType = JestGetType.getType
 
-local RobloxInstance = require(Packages.RobloxShared).RobloxInstance
+local RobloxInstance = require("@pkg/@jsdotlua/jest-roblox-shared").RobloxInstance
 local getRobloxProperties = RobloxInstance.getRobloxProperties
 local InstanceSubset = RobloxInstance.InstanceSubset
 

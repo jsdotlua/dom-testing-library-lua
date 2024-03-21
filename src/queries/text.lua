@@ -1,25 +1,23 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/queries/text.ts
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 type Array<T> = LuauPolyfill.Array<T>
 type Object = LuauPolyfill.Object
 
-local querySelectorsModule = require(script.Parent.Parent.jsHelpers.querySelectors)
+local querySelectorsModule = require("../jsHelpers/querySelectors")
 local matchesInstance = querySelectorsModule.matches
 local querySelectorAll = querySelectorsModule.querySelectorAll
 
 local exports = {}
 
-local wrapAllByQueryWithSuggestion = require(script.Parent.Parent["query-helpers"]).wrapAllByQueryWithSuggestion
-local checkContainerType = require(script.Parent.Parent.helpers).checkContainerType
-local typesModule = require(script.Parent.Parent.types)
+local wrapAllByQueryWithSuggestion = require("../query-helpers").wrapAllByQueryWithSuggestion
+local checkContainerType = require("../helpers").checkContainerType
+local typesModule = require("../types")
 type AllByText<T = Instance> = typesModule.AllByText<T>
 type GetErrorFunction<Argument = any> = typesModule.GetErrorFunction<Argument>
 type SelectorMatcherOptions = typesModule.SelectorMatcherOptions
 type Matcher = typesModule.Matcher
-local all_utilsModule = require(script.Parent["all-utils"])
+local all_utilsModule = require("./all-utils")
 local fuzzyMatches = all_utilsModule.fuzzyMatches
 local matches = all_utilsModule.matches
 local makeNormalizer = all_utilsModule.makeNormalizer

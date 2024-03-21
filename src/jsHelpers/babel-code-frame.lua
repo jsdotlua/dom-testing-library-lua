@@ -1,7 +1,5 @@
 -- ROBLOX upstream: https://github.com/babel/babel/blob/v7.18.5/packages/babel-code-frame/src/index.ts
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 local Error = LuauPolyfill.Error
@@ -23,7 +21,7 @@ local exports = {}
 -- local shouldHighlight = highlightModule.shouldHighlight
 -- local getChalk = highlightModule.getChalk
 local getChalk = function(...)
-	return require(Packages.Chalk)
+	return require("@pkg/@jsdotlua/chalk")
 end
 -- ROBLOX deviation END
 

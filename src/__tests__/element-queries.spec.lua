@@ -1,9 +1,7 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/element-queries.js
-local Packages = script.Parent.Parent.Parent
+local RegExp = require("@pkg/luau-regexp")
 
-local RegExp = require(Packages.LuauRegExp)
-
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local describe = JestGlobals.describe
@@ -11,13 +9,13 @@ local afterEach = JestGlobals.afterEach
 
 local CollectionService = game:GetService("CollectionService")
 
-local configure = require(script.Parent.Parent.config).configure
+local configure = require("../config").configure
 
 -- ROBLOX deviation START: to restore config
-local getConfig = require(script.Parent.Parent.config).getConfig
+local getConfig = require("../config").getConfig
 -- ROBLOX deviation START
 
-local test_utilsModule = require(script.Parent.helpers["test-utils"])
+local test_utilsModule = require("./helpers/test-utils")
 local render = test_utilsModule.render
 local renderIntoDocument = test_utilsModule.renderIntoDocument
 test("query can return null", function()

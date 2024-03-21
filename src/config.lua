@@ -1,7 +1,5 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/config.ts
-local Packages = script.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 local Error = LuauPolyfill.Error
@@ -10,7 +8,7 @@ type Object = LuauPolyfill.Object
 type Promise<T> = LuauPolyfill.Promise<T>
 
 -- ROBLOX deviation START: extracted to avoid circular dependency
-local defaultIgnore = require(script.Parent["config-default-ignore"])
+local defaultIgnore = require("./config-default-ignore")
 -- ROBLOX deviation END
 
 -- ROBLOX deviation START: unknown types
@@ -19,10 +17,10 @@ type Partial<T> = Object
 
 local exports = {}
 
-local configModule = require(script.Parent.types.config)
+local configModule = require("./types/config")
 type Config = configModule.Config
 type ConfigFn = configModule.ConfigFn
-local prettyDOM = require(script.Parent["pretty-dom"]).prettyDOM
+local prettyDOM = require("./pretty-dom").prettyDOM
 
 type Callback<T> = () -> T
 type InternalConfig = Config & { _disableExpensiveErrorDiagnostics: boolean }

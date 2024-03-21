@@ -1,20 +1,18 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/get-user-code-frame.js
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Error = LuauPolyfill.Error
 
-local stripAnsi = require(script.Parent.Parent.jsHelpers["strip-ansi"])
+local stripAnsi = require("../jsHelpers/strip-ansi")
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local beforeEach = JestGlobals.beforeEach
 local afterEach = JestGlobals.afterEach
 local jest = JestGlobals.jest
 
-local fs = require(script.Parent.Parent.jsHelpers.fs)
-local codeFrame = require(script.Parent.Parent["get-user-code-frame"])
+local fs = require("../jsHelpers/fs")
+local codeFrame = require("../get-user-code-frame")
 
 -- ROBLOX deviation START: different error format, doesn't contain column info
 -- local userStackFrame = "at somethingWrong (/sample-error/error-example.js:7:14)"

@@ -1,22 +1,20 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/queries/display-value.ts
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 type Object = LuauPolyfill.Object
 
-local querySelectorAll = require(script.Parent.Parent.jsHelpers.querySelectors).querySelectorAll
+local querySelectorAll = require("../jsHelpers/querySelectors").querySelectorAll
 
 local exports = {}
 
-local wrapAllByQueryWithSuggestion = require(script.Parent.Parent["query-helpers"]).wrapAllByQueryWithSuggestion
-local checkContainerType = require(script.Parent.Parent.helpers).checkContainerType
-local typesModule = require(script.Parent.Parent.types)
+local wrapAllByQueryWithSuggestion = require("../query-helpers").wrapAllByQueryWithSuggestion
+local checkContainerType = require("../helpers").checkContainerType
+local typesModule = require("../types")
 type AllByBoundAttribute = typesModule.AllByBoundAttribute
 type GetErrorFunction<Argument = any> = typesModule.GetErrorFunction<Argument>
 type Matcher = typesModule.Matcher
 type MatcherOptions = typesModule.MatcherOptions
-local all_utilsModule = require(script.Parent["all-utils"])
+local all_utilsModule = require("./all-utils")
 local _getNodeText = all_utilsModule.getNodeText
 local matches = all_utilsModule.matches
 local fuzzyMatches = all_utilsModule.fuzzyMatches

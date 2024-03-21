@@ -1,30 +1,28 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/index.js
-local Packages = script.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Object = LuauPolyfill.Object
 
 local exports = {} :: { [string]: any }
 
-local getQueriesForElement = require(script["get-queries-for-element"]).getQueriesForElement
-local queries = require(script.queries)
-local queryHelpers = require(script["query-helpers"])
+local getQueriesForElement = require("./get-queries-for-element").getQueriesForElement
+local queries = require("./queries")
+local queryHelpers = require("./query-helpers")
 
 Object.assign(exports, require(script.queries))
 Object.assign(exports, require(script["wait-for"]))
 Object.assign(exports, require(script["wait-for-element-to-be-removed"]))
-exports.getDefaultNormalizer = require(script.matches).getDefaultNormalizer
+exports.getDefaultNormalizer = require("./matches").getDefaultNormalizer
 Object.assign(exports, require(script["get-node-text"]))
 Object.assign(exports, require(script.events))
 Object.assign(exports, require(script["get-queries-for-element"]))
 Object.assign(exports, require(script.screen))
 Object.assign(exports, require(script["query-helpers"]))
--- local role_helpersModule = require(script["role-helpers"])
+-- local role_helpersModule = require("./role-helpers")
 -- exports.getRoles = role_helpersModule.getRoles
 -- exports.logRoles = role_helpersModule.logRoles
 -- exports.isInaccessible = role_helpersModule.isInaccessible
 Object.assign(exports, require(script["pretty-dom"]))
-local configModule = require(script.config)
+local configModule = require("./config")
 exports.configure = configModule.configure
 exports.getConfig = configModule.getConfig
 Object.assign(exports, require(script.suggestions))
@@ -36,10 +34,10 @@ exports.within = getQueriesForElement
 -- export query utils under a namespace for convenience:
 exports.queries = queries
 exports.queryHelpers = queryHelpers
-exports.document = require(script.jsHelpers.document)
+exports.document = require("./jsHelpers/document")
 
 -- ROBLOX deviation START: reexport types
-local typesModule = require(script.types)
+local typesModule = require("./types")
 export type within = typesModule.within
 export type QueryByBoundAttribute<T = Instance> = typesModule.QueryByBoundAttribute<T>
 export type AllByBoundAttribute<T = Instance> = typesModule.AllByBoundAttribute<T>

@@ -1,7 +1,5 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/query-helpers.ts
-local Packages = script.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Object = LuauPolyfill.Object
 local Set = LuauPolyfill.Set
@@ -9,7 +7,7 @@ local String = LuauPolyfill.String
 type Array<T> = LuauPolyfill.Array<T>
 type Object = LuauPolyfill.Object
 
-local querySelectorAll = require(script.Parent.jsHelpers.querySelectors).querySelectorAll
+local querySelectorAll = require("./jsHelpers/querySelectors").querySelectorAll
 
 local exports = {}
 
@@ -19,7 +17,7 @@ local matchAsProperties = {
 }
 -- ROBLOX deviation END
 
-local typesModule = require(script.Parent.types)
+local typesModule = require("./types")
 type GetErrorFunction<Argument = any> = typesModule.GetErrorFunction<Argument>
 type Matcher = typesModule.Matcher
 type MatcherOptions = typesModule.MatcherOptions
@@ -27,17 +25,17 @@ type QueryMethod<Argument, Return> = typesModule.QueryMethod<Argument, Return>
 type Variant = typesModule.Variant
 type WaitForOptions = typesModule.waitForOptions
 type WithSuggest = typesModule.WithSuggest
-local getSuggestedQuery = require(script.Parent.suggestions).getSuggestedQuery
+local getSuggestedQuery = require("./suggestions").getSuggestedQuery
 
-local matchesModule = require(script.Parent.matches)
+local matchesModule = require("./matches")
 local fuzzyMatches = matchesModule.fuzzyMatches
 local matches = matchesModule.matches
 local makeNormalizer = matchesModule.makeNormalizer
-local waitFor = require(script.Parent["wait-for"]).waitFor
-local getConfig = require(script.Parent.config).getConfig
+local waitFor = require("./wait-for").waitFor
+local getConfig = require("./config").getConfig
 
 -- ROBLOX deviation START: helper fn
-local getNodeTestId = require(script.Parent["get-node-test-id"]).getNodeTestId
+local getNodeTestId = require("./get-node-test-id").getNodeTestId
 -- ROBLOX deviation END
 
 local function getElementError(message: string | nil, container: Instance)

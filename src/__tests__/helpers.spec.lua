@@ -1,27 +1,25 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/helpers.js
-local Packages = script.Parent.Parent.Parent
+local Promise = require("@pkg/@jsdotlua/promise")
 
-local Promise = require(Packages.Promise)
-
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local describe = JestGlobals.describe
 local jest = JestGlobals.jest
 
 -- ROBLOX deviation START: assume constant document
-local document = require(script.Parent.Parent.jsHelpers.document)
+local document = require("../jsHelpers/document")
 -- ROBLOX deviation END
 
 -- ROBLOX TODO START: not ported yet. Mocked
--- local screen = require(script.Parent.Parent).screen
+-- local screen = require("..").screen
 local screen = {
 	debug = function() end,
 	logTestingPlaygroundURL = function() end,
 }
 -- ROBLOX TODO END
 
-local helpersModule = require(script.Parent.Parent.helpers)
+local helpersModule = require("../helpers")
 local getDocument = helpersModule.getDocument
 local getWindowFromNode = helpersModule.getWindowFromNode
 local checkContainerType = helpersModule.checkContainerType
