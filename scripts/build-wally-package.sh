@@ -18,7 +18,7 @@ echo Process package
 mkdir -p $wally_package
 cp LICENSE $wally_package/LICENSE
 
-node ./scripts/npm-to-wally.js package.json $wally_package/wally.toml roblox/wally-package.project.json
+node ./scripts/npm-to-wally.js package.json $wally_package/wally.toml $wally_package/default.project.json roblox/wally-package.project.json
 
 cp .darklua-wally.json roblox
 cp -r node_modules/.luau-aliases/* roblox
@@ -27,5 +27,4 @@ rojo sourcemap roblox/wally-package.project.json --output roblox/sourcemap.json
 
 darklua process --config roblox/.darklua-wally.json roblox/src $wally_package/src
 
-cp default.project.json $wally_package
 wally package --project-path $wally_package --list
