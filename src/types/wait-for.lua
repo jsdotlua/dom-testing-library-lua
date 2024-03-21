@@ -1,5 +1,4 @@
-local Packages = script.Parent.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 type Error = LuauPolyfill.Error
 type Object = LuauPolyfill.Object
 type Promise<T> = LuauPolyfill.Promise<T>

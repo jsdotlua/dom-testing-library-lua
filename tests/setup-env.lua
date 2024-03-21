@@ -1,12 +1,11 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/tests/setup-env.js
 
-local Packages = script.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local console = LuauPolyfill.console
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local jest = JestGlobals.jest
 local expect = JestGlobals.expect
 local afterAll = JestGlobals.afterAll
@@ -14,7 +13,7 @@ local afterEach = JestGlobals.afterEach
 local beforeAll = JestGlobals.beforeAll
 
 -- ROBLOX deviation START: explicitly extend expect
-local jestDomMatchers = require(Packages.DomTestingLibrary.jsHelpers["jest-dom"])
+local jestDomMatchers = require("../src/jsHelpers/jest-dom")
 expect.extend(jestDomMatchers)
 -- ROBLOX deviation END
 

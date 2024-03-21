@@ -1,17 +1,17 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/helpers/test-utils.js
 local Packages = script.Parent.Parent.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Object = LuauPolyfill.Object
 type Array<T> = LuauPolyfill.Array<T>
 type Object = LuauPolyfill.Object
 
-local afterEach = require(Packages.JestGlobals).afterEach
+local afterEach = require("@pkg/@jsdotlua/jest-globals").afterEach
 
-local document = require(script.Parent.Parent.Parent.jsHelpers.document)
+local document = require("../../jsHelpers/document")
 
 local exports = {}
 
-local getQueriesForElement = require(script.Parent.Parent.Parent["get-queries-for-element"]).getQueriesForElement
+local getQueriesForElement = require("../../get-queries-for-element").getQueriesForElement
 
 local function render(html: Array<Instance>, ref_: Object?)
 	local ref = (if ref_ == nil then {} else ref_) :: Object

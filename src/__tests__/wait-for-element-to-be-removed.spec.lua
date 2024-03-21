@@ -1,24 +1,21 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/wait-for-element-to-be-removed.js
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Error = LuauPolyfill.Error
 local setTimeout = LuauPolyfill.setTimeout
 
-local Promise = require(Packages.Promise)
+local Promise = require("@pkg/@jsdotlua/promise")
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 
 local CollectionService = game:GetService("CollectionService")
 
-local waitForElementToBeRemoved =
-	require(script.Parent.Parent["wait-for-element-to-be-removed"]).waitForElementToBeRemoved
-local renderIntoDocument = require(script.Parent.helpers["test-utils"]).renderIntoDocument
+local waitForElementToBeRemoved = require("../wait-for-element-to-be-removed").waitForElementToBeRemoved
+local renderIntoDocument = require("./helpers/test-utils").renderIntoDocument
 
-local document = require(script.Parent.Parent.jsHelpers.document)
+local document = require("../jsHelpers/document")
 test("resolves on mutation only when the element is removed", function()
 	return Promise.resolve()
 		:andThen(function()

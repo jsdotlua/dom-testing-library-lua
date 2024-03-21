@@ -1,15 +1,13 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/config.js
 
-local Packages = script.Parent.Parent.Parent
-
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local describe = JestGlobals.describe
 local beforeEach = JestGlobals.beforeEach
 local afterEach = JestGlobals.afterEach
 
-local configModule = require(script.Parent.Parent.config)
+local configModule = require("../config")
 local configure = configModule.configure
 local getConfig = configModule.getConfig
 

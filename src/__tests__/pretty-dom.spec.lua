@@ -1,10 +1,8 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/pretty-dom.js
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local console = LuauPolyfill.console
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local describe = JestGlobals.describe
@@ -12,13 +10,13 @@ local beforeEach = JestGlobals.beforeEach
 local afterEach = JestGlobals.afterEach
 local jest = JestGlobals.jest
 
-local document = require(script.Parent.Parent.jsHelpers.document)
+local document = require("../jsHelpers/document")
 
-local pretty_domModule = require(script.Parent.Parent["pretty-dom"])
+local pretty_domModule = require("../pretty-dom")
 local prettyDOM = pretty_domModule.prettyDOM
 local logDOM = pretty_domModule.logDOM
-local getUCDModule = require(script.Parent.Parent["get-user-code-frame"])
-local test_utilsModule = require(script.Parent.helpers["test-utils"])
+local getUCDModule = require("../get-user-code-frame")
+local test_utilsModule = require("./helpers/test-utils")
 local render = test_utilsModule.render
 local renderIntoDocument = test_utilsModule.renderIntoDocument
 

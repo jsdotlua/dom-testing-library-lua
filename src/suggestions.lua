@@ -1,32 +1,30 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/suggestions.js
-local Packages = script.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 local Object = LuauPolyfill.Object
 local console = LuauPolyfill.console
 
-local RegExp = require(Packages.LuauRegExp)
+local RegExp = require("@pkg/luau-regexp")
 
 -- ROBLOX deviation START: helper fn
-local getNodeTestId = require(script.Parent["get-node-test-id"]).getNodeTestId
+local getNodeTestId = require("./get-node-test-id").getNodeTestId
 -- ROBLOX deviation END
 
-local SuggestionTypes = require(script.Parent.types.suggestions)
+local SuggestionTypes = require("./types/suggestions")
 type Suggestion = SuggestionTypes.Suggestion
 type Method = SuggestionTypes.Method
 
 local exports = {}
 
--- local computeAccessibleName = require(Packages["dom-accessibility-api"]).computeAccessibleName
-local getDefaultNormalizer = require(script.Parent.matches).getDefaultNormalizer
-local getNodeText = require(script.Parent["get-node-text"]).getNodeText
-local getConfig = require(script.Parent.config).getConfig
--- local role_helpersModule = require(script.Parent["role-helpers"])
+-- local computeAccessibleName = require("@pkg/dom-accessibility-api").computeAccessibleName
+local getDefaultNormalizer = require("./matches").getDefaultNormalizer
+local getNodeText = require("./get-node-text").getNodeText
+local getConfig = require("./config").getConfig
+-- local role_helpersModule = require("./role-helpers")
 -- local getImplicitAriaRoles = role_helpersModule.getImplicitAriaRoles
 -- local isInaccessible = role_helpersModule.isInaccessible
--- local getLabels = require(script.Parent["label-helpers"]).getLabels
+-- local getLabels = require("./label-helpers").getLabels
 
 local normalize = getDefaultNormalizer()
 

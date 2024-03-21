@@ -1,6 +1,5 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/wait-for.js
-local Packages = script.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Boolean = LuauPolyfill.Boolean
 local Error = LuauPolyfill.Error
 local Object = LuauPolyfill.Object
@@ -11,16 +10,16 @@ local setTimeout = LuauPolyfill.setTimeout
 type Error = LuauPolyfill.Error
 type Promise<T> = LuauPolyfill.Promise<T>
 
-local Promise = require(Packages.Promise)
+local Promise = require("@pkg/@jsdotlua/promise")
 
-local isCallable = require(script.Parent.jsHelpers.isCallable)
-local TypeError = require(script.Parent.jsHelpers.typeError)
-local waitForTypes = require(script.Parent.types["wait-for"])
+local isCallable = require("./jsHelpers/isCallable")
+local TypeError = require("./jsHelpers/typeError")
+local waitForTypes = require("./types/wait-for")
 type waitForOptions = waitForTypes.waitForOptions
 
 local exports = {}
 
-local helpersModule = require(script.Parent.helpers)
+local helpersModule = require("./helpers")
 local _getWindowFromNode = helpersModule.getWindowFromNode
 local getDocument = helpersModule.getDocument
 local jestFakeTimersAreEnabled = helpersModule.jestFakeTimersAreEnabled
@@ -28,7 +27,7 @@ local jestFakeTimersAreEnabled = helpersModule.jestFakeTimersAreEnabled
 -- because these will be *real* timers, regardless of whether we're in
 -- an environment that's faked the timers out.
 local checkContainerType = helpersModule.checkContainerType
-local configModule = require(script.Parent.config)
+local configModule = require("./config")
 local getConfig = configModule.getConfig
 local runWithExpensiveErrorDiagnosticsDisabled = configModule.runWithExpensiveErrorDiagnosticsDisabled
 
@@ -155,7 +154,7 @@ local function waitFor(callback, ref)
 
 		if usingJestFakeTimers then
 			-- ROBLOX deviation: import jest here instead of expecting a global
-			local jest = require(Packages.JestGlobals).jest
+			local jest = require("@pkg/@jsdotlua/jest-globals").jest
 
 			local advanceTimersWrapper = getConfig().unstable_advanceTimersWrapper
 			checkCallback()

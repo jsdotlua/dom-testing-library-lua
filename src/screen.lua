@@ -1,28 +1,26 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/screen.ts
-local Packages = script.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 local Object = LuauPolyfill.Object
 local console = LuauPolyfill.console
 type Array<T> = LuauPolyfill.Array<T>
 type Object = LuauPolyfill.Object
 
-local document = require(script.Parent.jsHelpers.document)
-local TypeError = require(script.Parent.jsHelpers.typeError)
+local document = require("./jsHelpers/document")
+local TypeError = require("./jsHelpers/typeError")
 
 local exports = {}
 
 -- ROBLOX deviation START: not required
--- local compressToEncodedURIComponent = require(Packages["lz-string"]).compressToEncodedURIComponent
+-- local compressToEncodedURIComponent = require("@pkg/lz-string").compressToEncodedURIComponent
 -- ROBLOX deviation END
 
-local pretty_formatModule = require(Packages.PrettyFormat)
+local pretty_formatModule = require("@pkg/@jsdotlua/pretty-format")
 type OptionsReceived = pretty_formatModule.OptionsReceived
-local getQueriesForElement = require(script.Parent["get-queries-for-element"]).getQueriesForElement
-local getDocument = require(script.Parent.helpers).getDocument
-local logDOM = require(script.Parent["pretty-dom"]).logDOM
-local queries = require(script.Parent.queries)
+local getQueriesForElement = require("./get-queries-for-element").getQueriesForElement
+local getDocument = require("./helpers").getDocument
+local logDOM = require("./pretty-dom").logDOM
+local queries = require("./queries")
 
 -- ROBLOX deviation START: Testing playground not available
 -- local function unindent(string_: string)

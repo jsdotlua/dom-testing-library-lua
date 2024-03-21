@@ -1,23 +1,21 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/screen.js
-local Packages = script.Parent.Parent.Parent
-
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local beforeEach = JestGlobals.beforeEach
 local afterEach = JestGlobals.afterEach
 local jest = JestGlobals.jest
 
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local console = LuauPolyfill.console
 
-local Promise = require(Packages.Promise)
-local RegExp = require(Packages.LuauRegExp)
+local Promise = require("@pkg/@jsdotlua/promise")
+local RegExp = require("@pkg/luau-regexp")
 
-local getUCDModule = require(script.Parent.Parent["get-user-code-frame"])
+local getUCDModule = require("../get-user-code-frame")
 
-local screen = require(script.Parent.Parent.screen).screen
-local test_utilsModule = require(script.Parent.helpers["test-utils"])
+local screen = require("../screen").screen
+local test_utilsModule = require("./helpers/test-utils")
 local _render = test_utilsModule.render
 local renderIntoDocument = test_utilsModule.renderIntoDocument
 

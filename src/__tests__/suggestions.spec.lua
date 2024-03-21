@@ -1,29 +1,27 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/suggestions.js
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local console = LuauPolyfill.console
 
-local RegExp = require(Packages.LuauRegExp)
+local RegExp = require("@pkg/luau-regexp")
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local beforeAll = JestGlobals.beforeAll
 local afterAll = JestGlobals.afterAll
 local afterEach = JestGlobals.afterEach
 
-local typesModule = require(script.Parent.Parent.types)
+local typesModule = require("../types")
 type Suggestion = typesModule.Suggestion
 
-local querySelector = require(script.Parent.Parent.jsHelpers.querySelectors).querySelector
-local querySelectorAll = require(script.Parent.Parent.jsHelpers.querySelectors).querySelectorAll
+local querySelector = require("../jsHelpers/querySelectors").querySelector
+local querySelectorAll = require("../jsHelpers/querySelectors").querySelectorAll
 local CollectionService = game:GetService("CollectionService")
 
-local configure = require(script.Parent.Parent.config).configure
-local screen = require(script.Parent.Parent.screen).screen
-local getSuggestedQuery = require(script.Parent.Parent.suggestions).getSuggestedQuery
-local test_utilsModule = require(script.Parent.helpers["test-utils"])
+local configure = require("../config").configure
+local screen = require("../screen").screen
+local getSuggestedQuery = require("../suggestions").getSuggestedQuery
+local test_utilsModule = require("./helpers/test-utils")
 local renderIntoDocument = test_utilsModule.renderIntoDocument
 local render = test_utilsModule.render
 

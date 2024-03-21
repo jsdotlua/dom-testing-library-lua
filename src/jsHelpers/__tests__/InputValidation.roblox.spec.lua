@@ -1,18 +1,15 @@
 -- ROBLOX upstream: No upstream
---!strict
 local CoreGui = game:GetService("CoreGui")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 
-local Packages = script.Parent.Parent.Parent.Parent
-
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local describe = JestGlobals.describe
 local beforeEach = JestGlobals.beforeEach
 local afterEach = JestGlobals.afterEach
 
-local InputValidation = require(script.Parent.Parent["InputValidation.roblox"])
+local InputValidation = require("../InputValidation.roblox.lua")
 local assertMounted = InputValidation.assertMounted
 local assertCanActivate = InputValidation.assertCanActivate
 local assertVisibleWithinAncestors = InputValidation.assertVisibleWithinAncestors
@@ -20,7 +17,7 @@ local assertFirstInputTarget = InputValidation.assertFirstInputTarget
 local validateInput = InputValidation.validateInput
 local getCenter = InputValidation.getCenter
 
-local dispatchEvent = require(script.Parent.Parent.dispatchEvent)
+local dispatchEvent = require("../dispatchEvent")
 
 describe("input validation", function()
 	local MountedRoot

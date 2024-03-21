@@ -1,12 +1,10 @@
 -- ROBLOX upstream: no upstream
-local Packages = script.Parent.Parent.Parent.Parent
-
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local describe = JestGlobals.describe
 local test = JestGlobals.test
 
-local querySelectorsModule = require(script.Parent.Parent.querySelectors)
+local querySelectorsModule = require("../querySelectors")
 local querySelector = querySelectorsModule.querySelector
 local querySelectorAll = querySelectorsModule.querySelectorAll
 

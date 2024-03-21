@@ -1,21 +1,19 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/events.js
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local describe = JestGlobals.describe
 local jest = JestGlobals.jest
 
-local document = require(script.Parent.Parent.jsHelpers.document)
+local document = require("../jsHelpers/document")
 
-local event_mapModule = require(script.Parent.Parent["event-map"])
+local event_mapModule = require("../event-map")
 local _eventMap = event_mapModule.eventMap
 local _eventAliasMap = event_mapModule.eventAliasMap
-local ParentModule = require(script.Parent.Parent)
+local ParentModule = require("..")
 local fireEvent = ParentModule.fireEvent
 local _createEvent = ParentModule.createEvent
 
@@ -114,15 +112,15 @@ local eventTypes = {
 Array.forEach(eventTypes, function(ref)
 	local type_, events = ref.type, ref.events
 	describe(("%s Events"):format(type_), function()
-		Array.forEach(events, function(event)
+		for _, event in events do
 			-- ROBLOX deviation START: adjust to deviated events
 			test(("fires %s"):format(event.name), function()
-				Array.forEach(event.tests, function(test)
+				for _, test in event.tests do
 					local node = Instance.new(test.element)
 					local connection
-					Array.forEach(test.props, function(prop)
+					for _, prop in test.props do
 						node[prop] = test.props[prop]
-					end)
+					end
 					local spy = jest.fn()
 					connection = node[test.listener]:Connect(function(...)
 						local args = { ... }
@@ -133,10 +131,10 @@ Array.forEach(eventTypes, function(ref)
 					fireEvent[event.name](node, test.eventProps)
 					expect(spy).toHaveBeenCalledTimes(1)
 					connection:Disconnect()
-				end)
+				end
 			end)
 			-- ROBLOX deviation END
-		end)
+		end
 	end)
 end)
 test("fires resize", function()

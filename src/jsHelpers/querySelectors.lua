@@ -1,11 +1,10 @@
 -- ROBLOX upstream: no upstream
-local Packages = script.Parent.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local Array = LuauPolyfill.Array
 type Array<T> = LuauPolyfill.Array<T>
 
 -- ROBLOX deviation START: helper method
-local getNodeTestId = require(script.Parent.Parent["get-node-test-id"]).getNodeTestId
+local getNodeTestId = require("../get-node-test-id").getNodeTestId
 -- ROBLOX deviation END
 
 local exports = {}

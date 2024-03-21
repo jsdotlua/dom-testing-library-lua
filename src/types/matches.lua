@@ -1,13 +1,11 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/types/matches.d.ts
-local Packages = script.Parent.Parent.Parent
-
-local RegExp = require(Packages.LuauRegExp)
+local RegExp = require("@pkg/luau-regexp")
 type RegExp = RegExp.RegExp
 
 local exports = {}
 
 -- ROBLOX deviation START: Package not available
--- type ARIARole = require(Packages["aria-query"]).ARIARole
+-- type ARIARole = require("@pkg/aria-query").ARIARole
 type ARIARole = { [string]: any }
 -- ROBLOX deviation END
 

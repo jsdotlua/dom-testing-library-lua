@@ -3,9 +3,9 @@
 local exports = {}
 -- TypeScript Version: 3.8
 
-local getQueriesForElementModule = require(script["get-queries-for-element"])
-local queriesModule = require(script.queries)
-local queryHelpersModule = require(script["query-helpers"])
+local getQueriesForElementModule = require("./get-queries-for-element")
+local queriesModule = require("./queries")
+local queryHelpersModule = require("./query-helpers")
 
 export type within = getQueriesForElementModule.getQueriesForElement
 
@@ -97,18 +97,18 @@ export type FindBy<Argument> = queryHelpersModule.FindBy<Argument>
 export type BuiltQueryMethods<Argument> = queryHelpersModule.BuiltQueryMethods<Argument>
 export type buildQueries<Argument> = queryHelpersModule.buildQueries<Argument>
 
-local screenModule = require(script.screen)
+local screenModule = require("./screen")
 export type Screen<Q> = screenModule.Screen<Q>
 export type screen = screenModule.screen
 
-local waitForModule = require(script["wait-for"])
+local waitForModule = require("./wait-for")
 export type waitForOptions = waitForModule.waitForOptions
 export type waitFor = waitForModule.waitFor
 
-local waitForElementToBeRemovedModule = require(script["wait-for-element-to-be-removed"])
+local waitForElementToBeRemovedModule = require("./wait-for-element-to-be-removed")
 export type waitForElementToBeRemoved<T> = waitForElementToBeRemovedModule.waitForElementToBeRemoved<T>
 
-local matchesModule = require(script.matches)
+local matchesModule = require("./matches")
 export type MatcherFunction = matchesModule.MatcherFunction
 export type Matcher = matchesModule.Matcher
 export type ByRoleMatcher = matchesModule.ByRoleMatcher
@@ -119,10 +119,10 @@ export type Match = matchesModule.Match
 export type DefaultNormalizerOptions = matchesModule.DefaultNormalizerOptions
 export type getDefaultNormalizer = matchesModule.getDefaultNormalizer
 
-local getNodeTextModule = require(script["get-node-text"])
+local getNodeTextModule = require("./get-node-text")
 export type getNodeText = getNodeTextModule.getNodeText
 
-local eventsModule = require(script.events)
+local eventsModule = require("./events")
 export type EventType = eventsModule.EventType
 export type FireFunction = eventsModule.FireFunction
 export type FireObject = eventsModule.FireObject
@@ -137,7 +137,7 @@ export type Query = getQueriesForElementModule.Query
 export type Queries = getQueriesForElementModule.Queries
 export type getQueriesForElement = getQueriesForElementModule.getQueriesForElement
 
-local prettyDomModule = require(script["pretty-dom"])
+local prettyDomModule = require("./pretty-dom")
 export type PrettyDOMOptions = prettyDomModule.PrettyDOMOptions
 export type prettyDOM = (dom: Instance?, maxLength: number?, options: PrettyDOMOptions?) -> string | false
 export type logDOM = (dom: Instance?, maxLength: number?, options: PrettyDOMOptions?) -> ()
@@ -159,13 +159,13 @@ export type prettyFormat_Theme = prettyDomModule.prettyFormat_Theme
 -- Object.assign(exports, require(script["role-helpers"]))
 -- ROBLOX deviation END
 
-local configModule = require(script.config)
+local configModule = require("./config")
 export type Config = configModule.Config
 export type ConfigFn = configModule.ConfigFn
 export type configure = configModule.configure
 export type getConfig = configModule.getConfig
 
-local suggestionsModule = require(script.suggestions)
+local suggestionsModule = require("./suggestions")
 export type QueryOptions = suggestionsModule.QueryOptions
 export type QueryArgs = suggestionsModule.QueryArgs
 export type Suggestion = suggestionsModule.Suggestion

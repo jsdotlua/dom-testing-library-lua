@@ -1,4 +1,3 @@
---!strict
 local VirtualInputManager = game:GetService("VirtualInputManager")
 
 local INPUT_VALIDATION_PREFIX = "[Testing Library] input validation"

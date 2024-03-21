@@ -1,13 +1,11 @@
 -- ROBLOX upstream: No upstream
-local Packages = script.Parent.Parent.Parent.Parent
-
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local describe = JestGlobals.describe
 local test = JestGlobals.test
 local jest = JestGlobals.jest
 
-local dispatchEvent = require(script.Parent.Parent.dispatchEvent)
+local dispatchEvent = require("../dispatchEvent")
 describe("dispatchEvent", function()
 	test("should trigger click event", function()
 		local element = Instance.new("TextButton")

@@ -1,17 +1,15 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/src/__tests__/matches.js
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local console = LuauPolyfill.console
 
-local RegExp = require(Packages.LuauRegExp)
+local RegExp = require("@pkg/luau-regexp")
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 local jest = JestGlobals.jest
 
-local matchesModule = require(script.Parent.Parent.matches)
+local matchesModule = require("../matches")
 local fuzzyMatches = matchesModule.fuzzyMatches
 local matches = matchesModule.matches
 

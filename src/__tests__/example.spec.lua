@@ -1,18 +1,16 @@
 -- ROBLOX upstream: no upstream
-local Packages = script.Parent.Parent.Parent
-
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 local setTimeout = LuauPolyfill.setTimeout
 
-local Promise = require(Packages.Promise)
+local Promise = require("@pkg/@jsdotlua/promise")
 
-local JestGlobals = require(Packages.JestGlobals)
+local JestGlobals = require("@pkg/@jsdotlua/jest-globals")
 local expect = JestGlobals.expect
 local test = JestGlobals.test
 
 local CollectionService = game:GetService("CollectionService")
 
-local domTestingModule = require(script.Parent.Parent)
+local domTestingModule = require("..")
 local fireEvent, getByPlaceholderText, getByText, getByTestId, queryByTestId, waitFor =
 	domTestingModule.fireEvent,
 	domTestingModule.getByPlaceholderText,
@@ -21,7 +19,7 @@ local fireEvent, getByPlaceholderText, getByText, getByTestId, queryByTestId, wa
 	domTestingModule.queryByTestId,
 	domTestingModule.waitFor
 
-local querySelector = require(script.Parent.Parent.jsHelpers.querySelectors).querySelector
+local querySelector = require("../jsHelpers/querySelectors").querySelector
 
 local function getExampleDOM()
 	local div = Instance.new("Frame")

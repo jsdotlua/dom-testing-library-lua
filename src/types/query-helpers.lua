@@ -1,6 +1,5 @@
 -- ROBLOX upstream: https://github.com/testing-library/dom-testing-library/blob/v8.14.0/types/query-helpers.d.ts
-local Packages = script.Parent.Parent.Parent
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@pkg/@jsdotlua/luau-polyfill")
 type Array<T> = LuauPolyfill.Array<T>
 type Object = LuauPolyfill.Object
 type Promise<T> = LuauPolyfill.Promise<T>
@@ -8,10 +7,10 @@ type Error = LuauPolyfill.Error
 
 local exports = {}
 
-local matchesModule = require(script.Parent.matches)
+local matchesModule = require("./matches")
 type Matcher = matchesModule.Matcher
 type MatcherOptions = matchesModule.MatcherOptions
-local waitForModule = require(script.Parent["wait-for"])
+local waitForModule = require("./wait-for")
 type waitForOptions = waitForModule.waitForOptions
 
 export type WithSuggest = { suggest: boolean? }
